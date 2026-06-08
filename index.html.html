@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Caroline Musyoka — Certified Bookkeeper</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal:       #1B6B5A;
+    --teal-mid:   #2A8A72;
+    --teal-light: #E6F4F0;
+    --teal-pale:  #F2FAF8;
+    --ink:        #111714;
+    --ink-mid:    #374840;
+    --ink-soft:   #607069;
+    --rule:       #D4E8E2;
+    --white:      #FFFFFF;
+    --off-white:  #F8FDFB;
+    --gold:       #C9973A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 60px;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px; color: var(--teal); letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: var(--ink-soft);
+    text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 60px;
+  }
+  .hero-left {
+    background: var(--teal);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 64px;
+    position: relative; overflow: hidden;
+  }
+  .hero-left::before {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute; bottom: -80px; left: -80px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.85);
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 6px 14px;
+    border-radius: 2px; margin-bottom: 28px;
+    width: fit-content;
+  }
+  .hero-tag::before { content: '●'; font-size: 8px; color: #7ECFB8; }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(44px, 5vw, 64px);
+    color: var(--white); line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-size: 16px; font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7; margin-bottom: 36px;
+    max-width: 380px;
+  }
+  .hero-title strong { color: white; font-weight: 500; }
+  .hero-cta {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: white; color: var(--teal);
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 13px 28px; border-radius: 2px;
+    text-decoration: none; transition: all 0.2s;
+    border: 2px solid white;
+  }
+  .btn-primary:hover { background: transparent; color: white; }
+  .btn-secondary {
+    background: transparent; color: white;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 13px 28px; border-radius: 2px;
+    text-decoration: none; border: 1px solid rgba(255,255,255,0.35);
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: white; background: rgba(255,255,255,0.08); }
+
+  .hero-right {
+    background: var(--off-white);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 64px;
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    margin-bottom: 48px;
+  }
+  .stat {
+    background: white; padding: 28px 24px;
+    border: 1px solid var(--rule);
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px; color: var(--teal); line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 13px; color: var(--ink-soft); font-weight: 400;
+  }
+  .hero-contact { display: flex; flex-direction: column; gap: 12px; }
+  .contact-item {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 14px; color: var(--ink-mid);
+  }
+  .contact-icon {
+    width: 34px; height: 34px; background: var(--teal-light);
+    border-radius: 2px; display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex-shrink: 0;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 96px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 48px;
+  }
+  .section-label::before {
+    content: '';
+    width: 32px; height: 2px; background: var(--teal);
+    flex-shrink: 0;
+  }
+  .section-label h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px; color: var(--ink); font-weight: 400;
+  }
+  .section-label span {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--teal);
+    margin-left: auto;
+  }
+
+  /* ── ABOUT ── */
+  #about { border-top: 1px solid var(--rule); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .about-text p {
+    font-size: 16px; color: var(--ink-mid); line-height: 1.85;
+    margin-bottom: 20px; font-weight: 300;
+  }
+  .about-text p strong { color: var(--ink); font-weight: 500; }
+  .about-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+  .badge {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
+    padding: 6px 14px; border-radius: 2px;
+    border: 1px solid var(--rule); color: var(--ink-mid);
+    background: var(--off-white);
+  }
+  .badge.primary { background: var(--teal-light); border-color: var(--teal-mid); color: var(--teal); }
+  .about-callout {
+    background: var(--teal); color: white;
+    padding: 40px 36px; border-radius: 2px;
+    position: sticky; top: 80px;
+  }
+  .callout-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px; margin-bottom: 16px; line-height: 1.3;
+  }
+  .callout-body { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.8); margin-bottom: 24px; }
+  .callout-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; color: white;
+    text-decoration: none; letter-spacing: 0.04em;
+    text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 2px; transition: border-color 0.2s;
+  }
+  .callout-link:hover { border-color: white; }
+
+  /* ── SERVICES ── */
+  #services { background: var(--off-white); max-width: 100%; padding: 96px 0; }
+  #services > * { max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 40px; padding-right: 40px; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    max-width: 1100px; margin: 0 auto; padding: 0 40px;
+  }
+  .service-card {
+    background: white; padding: 36px 32px;
+    border: 1px solid var(--rule);
+    transition: all 0.25s; cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: var(--teal);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-card:hover { box-shadow: 0 8px 32px rgba(27,107,90,0.1); }
+  .service-icon {
+    width: 44px; height: 44px; background: var(--teal-light);
+    border-radius: 2px; display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 20px;
+  }
+  .service-card h3 {
+    font-size: 16px; font-weight: 600; color: var(--ink);
+    margin-bottom: 10px; line-height: 1.3;
+  }
+  .service-card p {
+    font-size: 14px; color: var(--ink-soft); line-height: 1.75; font-weight: 300;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { border-top: 1px solid var(--rule); }
+  .exp-timeline { position: relative; }
+  .exp-timeline::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 0;
+    width: 1px; background: var(--rule);
+  }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 40px; padding: 0 0 52px 0;
+    position: relative;
+  }
+  .exp-item::before {
+    content: ''; position: absolute; left: -5px; top: 8px;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--teal); border: 2px solid white;
+    box-shadow: 0 0 0 1px var(--teal);
+    z-index: 1;
+  }
+  .exp-left { padding-left: 24px; }
+  .exp-dates {
+    font-size: 12px; font-weight: 500; color: var(--teal);
+    letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 4px;
+  }
+  .exp-company { font-size: 13px; color: var(--ink-soft); font-weight: 400; }
+  .exp-right {}
+  .exp-role { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 12px; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .exp-bullets li {
+    font-size: 14px; color: var(--ink-mid); line-height: 1.7;
+    font-weight: 300; padding-left: 18px; position: relative;
+  }
+  .exp-bullets li::before {
+    content: '▸'; position: absolute; left: 0;
+    color: var(--teal); font-size: 11px; top: 2px;
+  }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .exp-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.04em;
+    padding: 4px 10px; border-radius: 2px;
+    background: var(--teal-pale); color: var(--teal);
+    border: 1px solid var(--teal-light);
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--ink); max-width: 100%; padding: 96px 0; }
+  #skills .section-label h2 { color: white; }
+  #skills .section-label::before { background: #7ECFB8; }
+  #skills .section-label span { color: #7ECFB8; }
+  #skills > .section-label { max-width: 1100px; margin: 0 auto 48px; padding: 0 40px; }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    max-width: 1100px; margin: 0 auto; padding: 0 40px;
+  }
+  .skill-group { background: #1A2420; padding: 32px 28px; }
+  .skill-group-title {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #7ECFB8; margin-bottom: 20px;
+  }
+  .skill-list { display: flex; flex-direction: column; gap: 10px; }
+  .skill-item { display: flex; align-items: center; gap: 10px; }
+  .skill-dot { width: 6px; height: 6px; background: var(--teal-mid); border-radius: 50%; flex-shrink: 0; }
+  .skill-name { font-size: 14px; color: rgba(255,255,255,0.75); font-weight: 300; }
+
+  /* ── EDUCATION ── */
+  #education { border-top: 1px solid var(--rule); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .edu-card {
+    border: 1px solid var(--rule); padding: 32px 28px;
+    position: relative; background: white;
+    transition: box-shadow 0.2s;
+  }
+  .edu-card:hover { box-shadow: 0 4px 24px rgba(27,107,90,0.08); }
+  .edu-card-type {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--teal);
+    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+  }
+  .edu-card-type::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+  .edu-degree { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .edu-school { font-size: 14px; color: var(--ink-soft); margin-bottom: 4px; font-weight: 300; }
+  .edu-year {
+    font-size: 12px; font-weight: 500; color: var(--teal);
+    letter-spacing: 0.04em; margin-top: 12px;
+  }
+  .edu-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.7; margin-top: 10px; font-weight: 300; }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--off-white); max-width: 100%; padding: 96px 0; }
+  #projects .section-label { max-width: 1100px; margin: 0 auto 48px; padding: 0 40px; }
+  .projects-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    max-width: 1100px; margin: 0 auto; padding: 0 40px;
+  }
+  .project-card {
+    background: white; padding: 40px 36px;
+    border: 1px solid var(--rule);
+    transition: all 0.25s;
+  }
+  .project-card:hover { box-shadow: 0 8px 32px rgba(27,107,90,0.1); }
+  .project-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px; color: var(--teal-light); line-height: 1;
+    margin-bottom: 12px;
+  }
+  .project-title { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .project-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.75; font-weight: 300; }
+  .project-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .project-tool {
+    font-size: 11px; font-weight: 500; padding: 4px 10px;
+    border-radius: 2px; background: var(--teal-pale);
+    color: var(--teal); border: 1px solid var(--teal-light);
+  }
+
+  /* ── CONTACT ── */
+  #contact { border-top: 1px solid var(--rule); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-intro h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px; color: var(--ink); margin-bottom: 16px; line-height: 1.2;
+  }
+  .contact-intro p { font-size: 15px; color: var(--ink-soft); line-height: 1.8; font-weight: 300; }
+  .contact-details { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .contact-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 18px 20px; border: 1px solid var(--rule);
+    background: var(--off-white);
+  }
+  .contact-icon-box {
+    width: 40px; height: 40px; background: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; flex-shrink: 0; border-radius: 2px;
+  }
+  .contact-detail-label { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+  .contact-detail-value { font-size: 14px; color: var(--ink); font-weight: 500; }
+  .availability-box {
+    background: var(--teal); padding: 40px 36px; border-radius: 2px;
+  }
+  .avail-title {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 12px;
+  }
+  .avail-status {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 20px; font-weight: 600; color: white; margin-bottom: 20px;
+  }
+  .avail-dot {
+    width: 10px; height: 10px; background: #7ECFB8;
+    border-radius: 50%; animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.3); }
+  }
+  .avail-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .avail-list li {
+    font-size: 14px; color: rgba(255,255,255,0.8);
+    padding-left: 18px; position: relative; font-weight: 300;
+  }
+  .avail-list li::before {
+    content: '✓'; position: absolute; left: 0;
+    color: #7ECFB8; font-weight: 600;
+  }
+  .portfolio-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 28px; background: white;
+    color: var(--teal); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 12px 24px; border-radius: 2px; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .portfolio-link:hover { background: var(--teal-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); padding: 32px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px; color: white;
+  }
+  .footer-copy { font-size: 13px; color: rgba(255,255,255,0.35); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 60px 32px; min-height: 60vh; }
+    .hero-right { padding: 48px 32px; }
+    .about-grid, .contact-grid, .edu-grid, .projects-grid { grid-template-columns: 1fr; gap: 32px; }
+    .services-grid, .skills-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 24px; }
+    .nav-links { gap: 20px; }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    .exp-timeline::before { display: none; }
+    .exp-item::before { display: none; }
+    .exp-left { padding-left: 0; }
+    section { padding: 64px 24px; }
+  }
+  @media (max-width: 600px) {
+    .services-grid, .skills-grid { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Caroline Musyoka</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Available for Remote Work</div>
+    <h1 class="hero-name">Caroline<br>Musyoka</h1>
+    <p class="hero-title">
+      <strong>QuickBooks Certified Bookkeeper</strong> with a BCom in Finance. Delivering clean books, accurate reports, and AI-powered workflows for businesses and organizations worldwide.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Hire Me</a>
+      <a href="#services" class="btn-secondary">View Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years Bookkeeping Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">QBO</div>
+        <div class="stat-label">QuickBooks Certified</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Professional Roles</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Remote Ready</div>
+      </div>
+    </div>
+    <div class="hero-contact">
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        musyokacarolinenduku@gmail.com
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">☎</div>
+        +254 768 546 326
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">⌖</div>
+        Nairobi, Kenya · Remote
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">⬡</div>
+        contra.com/carolinemusyoka
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">
+    <h2>About Me</h2>
+    <span>Who I Am</span>
+  </div>
+  <div class="about-grid fade-up">
+    <div class="about-text">
+      <p>I'm a <strong>QuickBooks Certified Bookkeeper</strong> with a Bachelor of Commerce in Finance from Masinde Muliro University of Science and Technology. I bring together formal finance education, hands-on bookkeeping experience, and modern AI-assisted workflows to deliver financial services that are accurate, timely, and genuinely useful.</p>
+      <p>Over the past few years I've worked across bookkeeping, financial transcription editing, and AI data annotation — building a profile that combines <strong>deep finance expertise with practical tech fluency</strong>. I work fully remotely and thrive in async, deadline-driven environments.</p>
+      <p>Whether you need clean monthly books, a QuickBooks setup, or a custom Excel dashboard, I bring the same standard: <strong>precision, reliability, and clear communication</strong>.</p>
+      <div class="about-badges">
+        <span class="badge primary">QuickBooks Certified</span>
+        <span class="badge primary">BCom Finance</span>
+        <span class="badge">Remote-Ready</span>
+        <span class="badge">Advanced Excel</span>
+        <span class="badge">AI-Powered Workflows</span>
+        <span class="badge">Async Communication</span>
+      </div>
+    </div>
+    <div class="about-callout">
+      <div class="callout-title">Ready to bring order to your finances</div>
+      <p class="callout-body">I'm currently accepting new remote clients across bookkeeping, financial reporting, and finance support roles. Let's work together to keep your books clean and your numbers clear.</p>
+      <a href="https://contra.com/carolinemusyoka" class="callout-link" target="_blank">View Portfolio on Contra →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<div id="services" style="background:var(--off-white); padding: 96px 0;">
+  <div style="max-width:1100px; margin:0 auto; padding:0 40px;">
+    <div class="section-label fade-up">
+      <h2>Services</h2>
+      <span>What I Offer</span>
+    </div>
+  </div>
+  <div class="services-grid fade-up">
+    <div class="service-card">
+      <div class="service-icon">📒</div>
+      <h3>Bookkeeping</h3>
+      <p>End-to-end monthly bookkeeping — transaction recording, categorization, accounts payable & receivable, and clean audit-ready records maintained in QuickBooks Online.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Financial Reporting</h3>
+      <p>Monthly profit & loss statements, balance sheets, and budget variance reports delivered in a clear format that helps you understand exactly where your money stands.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔄</div>
+      <h3>Bank Reconciliation</h3>
+      <p>Monthly bank and credit account reconciliation to ensure your books match your actual statements, catch errors early, and keep records accurate and audit-ready.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚙️</div>
+      <h3>QuickBooks Setup & Cleanup</h3>
+      <p>New to QuickBooks Online or dealing with messy books? I set up your chart of accounts, clean up past transactions, and get your QBO file organized and accurate.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Excel Financial Dashboards</h3>
+      <p>Custom Excel templates and dashboards for budget tracking, expense reporting, and financial summaries — built with pivot tables and formulas tailored to your business.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏛️</div>
+      <h3>Nonprofit & NGO Bookkeeping</h3>
+      <p>Specialized bookkeeping for nonprofits and NGOs — including fund accounting, grant expenditure tracking, and donor reporting to keep you compliant and transparent.</p>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label fade-up">
+    <h2>Experience</h2>
+    <span>Work History</span>
+  </div>
+  <div class="exp-timeline">
+
+    <div class="exp-item fade-up">
+      <div class="exp-left">
+        <div class="exp-dates">Jan 2023 – Dec 2025</div>
+        <div class="exp-company">Self-employed · Remote</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Freelance Bookkeeper</div>
+        <ul class="exp-bullets">
+          <li>Provided remote bookkeeping services for a private company using QuickBooks Online and Microsoft Excel</li>
+          <li>Prepared income statements, balance sheets, and monthly financial reports for management review</li>
+          <li>Performed bank reconciliations and managed accounts payable and receivable processes</li>
+          <li>Maintained organized, audit-ready books and improved cash flow visibility for the client</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">QuickBooks Online</span>
+          <span class="exp-tag">Excel</span>
+          <span class="exp-tag">Bank Reconciliation</span>
+          <span class="exp-tag">Financial Reporting</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-left">
+        <div class="exp-dates">Jul 2025 – Apr 2026</div>
+        <div class="exp-company">Remoat Teams · Remote</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Financial Transcription Editor</div>
+        <ul class="exp-bullets">
+          <li>Reviewed and edited financial transcripts for accuracy, clarity, and consistency per client style guidelines</li>
+          <li>Proofread high-volume financial content with strong attention to technical financial terminology</li>
+          <li>Delivered edited transcripts within strict turnaround times in a fully remote, async environment</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Proofreading</span>
+          <span class="exp-tag">Financial Documentation</span>
+          <span class="exp-tag">Attention to Detail</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-left">
+        <div class="exp-dates">Dec 2025 – Mar 2026</div>
+        <div class="exp-company">iMerit Scholars · Remote</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Data Annotation Specialist</div>
+        <ul class="exp-bullets">
+          <li>Annotated and validated datasets to support AI and machine learning model training</li>
+          <li>Maintained high accuracy across large annotation volumes with critical thinking on edge cases</li>
+          <li>Worked independently in a remote, deadline-driven environment with minimal supervision</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">AI Data Annotation</span>
+          <span class="exp-tag">Data Labeling</span>
+          <span class="exp-tag">Quality Assurance</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-left">
+        <div class="exp-dates">Jan 2022 – Dec 2022</div>
+        <div class="exp-company">KMTC · On-site</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Finance & Accounts Clerk</div>
+        <ul class="exp-bullets">
+          <li>Supported the finance department with day-to-day accounting, ledger maintenance, and transaction recording</li>
+          <li>Assisted with preparation of financial summaries and internal reports for institutional use</li>
+          <li>Gained hands-on experience in institutional finance operations and financial documentation standards</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Bookkeeping</span>
+          <span class="exp-tag">Accounts Payable</span>
+          <span class="exp-tag">Financial Reporting</span>
+          <span class="exp-tag">Data Entry</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div id="skills" style="background:var(--ink); padding: 96px 0;">
+  <div class="section-label fade-up" style="max-width:1100px; margin:0 auto 48px; padding:0 40px;">
+    <h2 style="color:white; font-family:'DM Serif Display',serif; font-weight:400; font-size:32px;">Skills</h2>
+    <span style="color:#7ECFB8; font-size:12px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; margin-left:auto;">Core Competencies</span>
+  </div>
+  <div class="skills-grid fade-up">
+    <div class="skill-group">
+      <div class="skill-group-title">Bookkeeping</div>
+      <div class="skill-list">
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">QuickBooks Online</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Bank Reconciliation</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Accounts Payable & Receivable</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Chart of Accounts</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Monthly Financial Close</span></div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Reporting & Analysis</div>
+      <div class="skill-list">
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Financial Statements</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Budget Tracking</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Variance Analysis</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Grant Expenditure Reports</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Cash Flow Reporting</span></div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Excel</div>
+      <div class="skill-list">
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Pivot Tables</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">VLOOKUP & IF Formulas</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Financial Dashboards</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Custom Templates</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Data Visualization</span></div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">AI & Data</div>
+      <div class="skill-list">
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">AI-Assisted Workflows</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Data Annotation</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">ML Model Support</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Quality Assurance</span></div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Editing & Documentation</div>
+      <div class="skill-list">
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Financial Proofreading</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Transcription Editing</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Style Guide Compliance</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Technical Writing</span></div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Professional</div>
+      <div class="skill-list">
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Remote Work</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Async Communication</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Attention to Detail</span></div>
+        <div class="skill-item"><div class="skill-dot"></div><span class="skill-name">Time Management</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label fade-up">
+    <h2>Education</h2>
+    <span>Qualifications</span>
+  </div>
+  <div class="edu-grid fade-up">
+    <div class="edu-card">
+      <div class="edu-card-type">Degree</div>
+      <div class="edu-degree">Bachelor of Commerce — Finance</div>
+      <div class="edu-school">Masinde Muliro University of Science and Technology</div>
+      <div class="edu-year">2018 – 2022</div>
+      <div class="edu-desc">Financial Accounting · Management Accounting · Corporate Finance · Business Law · Economics</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-card-type">Certification</div>
+      <div class="edu-degree">QuickBooks Online Certification</div>
+      <div class="edu-school">Intuit · QuickBooks Online Accountant</div>
+      <div class="edu-year">2024</div>
+      <div class="edu-desc">Full-cycle bookkeeping, bank reconciliation, financial reporting, invoicing, and QBOA client management.</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-card-type">Course</div>
+      <div class="edu-degree">Excel Fundamentals for Finance</div>
+      <div class="edu-school">DataCamp</div>
+      <div class="edu-year">2025</div>
+      <div class="edu-desc">Pivot tables, VLOOKUP, nested formulas, data visualization, and dynamic financial dashboards.</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-card-type">Course</div>
+      <div class="edu-degree">Microsoft AI Fluency</div>
+      <div class="edu-school">Microsoft Learn</div>
+      <div class="edu-year">2025</div>
+      <div class="edu-desc">Foundational AI concepts, responsible AI principles, and practical AI tools in professional workflows.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<div id="projects" style="background:var(--off-white); padding: 96px 0;">
+  <div class="section-label fade-up" style="max-width:1100px; margin:0 auto 48px; padding:0 40px;">
+    <h2>Work Samples</h2>
+    <span>Projects</span>
+  </div>
+  <div class="projects-grid fade-up">
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-title">KES Bookkeeping Template</div>
+      <div class="project-desc">A custom Excel bookkeeping template built for Kenyan businesses — KES-formatted with five sheets: Dashboard, Chart of Accounts, Income & Expenses, Bank Reconciliation, and Transaction Log. Includes dynamic formulas and an automated summary dashboard.</div>
+      <div class="project-tools">
+        <span class="project-tool">Microsoft Excel</span>
+        <span class="project-tool">Pivot Tables</span>
+        <span class="project-tool">Financial Dashboards</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-title">Remote Bookkeeping — Private Client</div>
+      <div class="project-desc">Three-year remote bookkeeping engagement for a private company. Delivered monthly financial reports, maintained clean QBO records, performed bank reconciliations, and managed AP/AR processes throughout the engagement.</div>
+      <div class="project-tools">
+        <span class="project-tool">QuickBooks Online</span>
+        <span class="project-tool">Bank Reconciliation</span>
+        <span class="project-tool">Financial Reporting</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">03</div>
+      <div class="project-title">Financial Transcript Editing</div>
+      <div class="project-desc">Edited and proofread financial transcripts at scale for Remoat Teams, applying client-specific style guidelines to high-volume financial content. Maintained accuracy and consistency across a 10-month remote contract.</div>
+      <div class="project-tools">
+        <span class="project-tool">Proofreading</span>
+        <span class="project-tool">Financial Documentation</span>
+        <span class="project-tool">Remote Work</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">04</div>
+      <div class="project-title">AI Training Data Annotation</div>
+      <div class="project-desc">Contributed to machine learning model improvement at iMerit Scholars by annotating and validating datasets. Applied consistent labeling standards across large data volumes with high accuracy rates in a fully remote setup.</div>
+      <div class="project-tools">
+        <span class="project-tool">Data Annotation</span>
+        <span class="project-tool">AI Training</span>
+        <span class="project-tool">Quality Assurance</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label fade-up">
+    <h2>Contact</h2>
+    <span>Get in Touch</span>
+  </div>
+  <div class="contact-grid fade-up">
+    <div>
+      <div class="contact-intro">
+        <h3>Let's work together</h3>
+        <p>I'm currently accepting new remote clients and open to bookkeeping, finance, and AI-related roles. If you need clean books, accurate reports, or a reliable finance professional on your team, let's talk.</p>
+      </div>
+      <div class="contact-details">
+        <div class="contact-row">
+          <div class="contact-icon-box" style="color:white;">✉</div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-value">musyokacarolinenduku@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon-box" style="color:white;">☎</div>
+          <div>
+            <div class="contact-detail-label">Phone / WhatsApp</div>
+            <div class="contact-detail-value">+254 768 546 326</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon-box" style="color:white;">⌖</div>
+          <div>
+            <div class="contact-detail-label">Location</div>
+            <div class="contact-detail-value">Nairobi, Kenya — Remote Worldwide</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="availability-box">
+      <div class="avail-title">Current Availability</div>
+      <div class="avail-status">
+        <div class="avail-dot"></div>
+        Open to New Clients
+      </div>
+      <ul class="avail-list">
+        <li>Remote bookkeeping (ongoing or one-off)</li>
+        <li>QuickBooks Online setup & cleanup</li>
+        <li>Financial reporting & Excel dashboards</li>
+        <li>Finance & accounting roles (remote)</li>
+        <li>AI data annotation & related roles</li>
+      </ul>
+      <a href="https://contra.com/carolinemusyoka" class="portfolio-link" target="_blank">View Portfolio on Contra →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Caroline Musyoka</div>
+  <div class="footer-copy">QuickBooks Certified Bookkeeper · Nairobi, Kenya</div>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
